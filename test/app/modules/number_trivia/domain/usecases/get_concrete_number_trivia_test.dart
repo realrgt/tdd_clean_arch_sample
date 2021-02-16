@@ -5,14 +5,14 @@ import 'package:tdd_clean_arch/app/modules/number_trivia/domain/entities/number_
 import 'package:tdd_clean_arch/app/modules/number_trivia/domain/repositories/number_trivia_repository.dart';
 import 'package:tdd_clean_arch/app/modules/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 
-class MockNumberTrivaRepository extends Mock implements NumberTriviaRepository {
-}
+class MockNumberTriviaRepository extends Mock
+    implements NumberTriviaRepository {}
 
 void main() {
   GetConcreteNumberTrivia usecase;
-  MockNumberTrivaRepository mockNumberTriviaRepository;
+  MockNumberTriviaRepository mockNumberTriviaRepository;
   setUp(() {
-    mockNumberTriviaRepository = MockNumberTrivaRepository();
+    mockNumberTriviaRepository = MockNumberTriviaRepository();
     usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
   });
 
