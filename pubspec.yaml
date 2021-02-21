@@ -3,7 +3,7 @@ description: Deep dive into TDD and Clean Architecture in Flutter.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -17,22 +17,21 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
-## Slidy Scripts 
-vars: 
-    clean: flutter clean
-    get: flutter pub get
-    runner: flutter pub run build_runner
-scripts: 
-    build: $runner build
-    watch: $clean & $get & $runner watch
-    build_clean: $clean & $get & $runner build --delete-conflicting-outputs
-
-
+## Slidy Scripts
+vars:
+  clean: flutter clean
+  get: flutter pub get
+  runner: flutter pub run build_runner
+scripts:
+  build: $runner build
+  watch: $clean & $get & $runner watch
+  build_clean: $clean & $get & $runner build --delete-conflicting-outputs
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  data_connection_checker: ^0.3.4
   http: ^0.12.0
   shared_preferences: ^0.5.12+4
   rx_notifier: ^0.0.8
@@ -42,7 +41,6 @@ dependencies:
   flutter_modular: ^2.0.1
   flutter:
     sdk: flutter
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -59,7 +57,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
