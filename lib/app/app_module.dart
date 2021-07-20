@@ -14,15 +14,19 @@ import 'modules/number_trivia/data/repositories/number_trivia_repository_impl.da
 import 'modules/number_trivia/domain/repositories/number_trivia_repository.dart';
 import 'modules/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 import 'modules/number_trivia/domain/usecases/get_random_number_trivia.dart';
+import 'modules/number_trivia/number_trivia_module.dart';
 import 'modules/number_trivia/presenter/bloc/bloc.dart';
 
 class AppModule extends MainModule {
+  final SharedPreferences prefs;
+  AppModule({@required this.prefs});
+
   @override
   List<Bind> get binds => [
         Bind((i) => AppController()),
         //! External
-        Bind((i) => SharedPreferences.getInstance()),
         Bind((i) => http.Client()),
+        Bind((i) => SharedPreferences.getInstance()),
         Bind((i) => DataConnectionChecker()),
 
         //! Features - Number Trivia
@@ -53,7 +57,8 @@ class AppModule extends MainModule {
           (i) => NumberTriviaRemoteDataSourceImpl(client: i()),
         ),
         Bind<NumberTriviaLocalDataSource>(
-          (i) => NumberTriviaLocalDataSourceImpl(sharedPreferences: i()),
+          // (i) => NumberTriviaLocalDataSourceImpl(sharedPreferences: prefs),
+          (i) => NumberTriviaLocalDataSourceImpl(sharedPreferences: i.get(defaultValue: prefs)),
         ),
 
         //! Core
@@ -65,7 +70,7 @@ class AppModule extends MainModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, child: (_, args) => Scaffold()),
+        ModularRouter(Modular.initialRoute, module: NumberTriviaModule()),
       ];
 
   @override
